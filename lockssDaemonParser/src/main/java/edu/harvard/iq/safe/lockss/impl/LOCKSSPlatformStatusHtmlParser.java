@@ -18,6 +18,7 @@
 package edu.harvard.iq.safe.lockss.impl;
 
 
+import edu.harvard.iq.safe.lockss.api.LOCKSSPlatformStatusParser;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedHashMap;
@@ -38,7 +39,7 @@ import org.jsoup.select.Elements;
  *
  * @author Akio Sone
  */
-public class LOCKSSPlatformStatusHtmlParser {
+public class LOCKSSPlatformStatusHtmlParser implements LOCKSSPlatformStatusParser {
 
     private static final Logger logger =
             Logger.getLogger(LOCKSSPlatformStatusHtmlParser.class.getName());
@@ -129,6 +130,7 @@ public class LOCKSSPlatformStatusHtmlParser {
      *
      * @param is
      */
+    @Override
     public void getPlatformStatusData(InputStream is) {
 
         try {
@@ -258,6 +260,7 @@ public class LOCKSSPlatformStatusHtmlParser {
     /**
      * @return the boxInfoMap
      */
+    @Override
     public Map<String, String> getBoxInfoMap() {
         return boxInfoMap;
     }
@@ -265,6 +268,7 @@ public class LOCKSSPlatformStatusHtmlParser {
     /**
      * @param boxInfoMap the boxInfoMap to set
      */
+    @Override
     public void setBoxInfoMap(Map<String, String> boxInfoMap) {
         this.boxInfoMap = boxInfoMap;
     }
@@ -272,6 +276,7 @@ public class LOCKSSPlatformStatusHtmlParser {
     /**
      * @return the summaryInfoMap
      */
+    @Override
     public Map<String, String> getSummaryInfoMap() {
         return summaryInfoMap;
     }
@@ -279,6 +284,7 @@ public class LOCKSSPlatformStatusHtmlParser {
     /**
      * @param summaryInfoMap the summaryInfoMap to set
      */
+    @Override
     public void setSummaryInfoMap(Map<String, String> summaryInfoMap) {
         this.summaryInfoMap = summaryInfoMap;
     }
@@ -287,6 +293,7 @@ public class LOCKSSPlatformStatusHtmlParser {
      *
      * @return
      */
+    @Override
     public LOCKSSDaemonStatusTableTO getLOCKSSDaemonStatusTableTO() {
         LOCKSSDaemonStatusTableTO ldstTO = new LOCKSSDaemonStatusTableTO();
         ldstTO.tableId = tableId;
