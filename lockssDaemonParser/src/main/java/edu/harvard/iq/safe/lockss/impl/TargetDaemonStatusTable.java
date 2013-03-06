@@ -16,7 +16,7 @@
  *  under the License.
  */
 
-package edu.harvard.iq.safe.lockss;
+package edu.harvard.iq.safe.lockss.impl;
 
 /**
  *
