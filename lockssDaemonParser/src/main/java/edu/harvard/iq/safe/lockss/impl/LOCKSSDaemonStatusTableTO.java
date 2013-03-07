@@ -18,6 +18,7 @@
 
 package edu.harvard.iq.safe.lockss.impl;
 
+import edu.harvard.iq.safe.lockss.api.LOCKSSDaemonStatusTable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -32,7 +33,7 @@ import org.apache.commons.lang3.StringUtils;
  *
  * @author asone
  */
-public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
+public class LOCKSSDaemonStatusTableTO implements LOCKSSDaemonStatusTable {
 
     static final Logger logger =
             Logger.getLogger(LOCKSSDaemonStatusTableTO.class.getName());
@@ -45,6 +46,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     /**
      * @return the tableId
      */
+    @Override
     public String getTableId() {
         return tableId;
     }
@@ -52,6 +54,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     /**
      * @param tableId the tableId to set
      */
+    @Override
     public void setTableId(String tableId) {
         this.tableId = tableId;
     }
@@ -63,6 +66,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     /**
      * @return the columndescriptorList
      */
+    @Override
     public List<String> getColumndescriptorList() {
         return columndescriptorList;
     }
@@ -70,6 +74,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     /**
      * @param columndescriptorList the columndescriptorList to set
      */
+    @Override
     public void setColumndescriptorList(List<String> columndescriptorList) {
         this.columndescriptorList = columndescriptorList;
     }
@@ -81,6 +86,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     /**
      * @return the summaryInfoList
      */
+    @Override
     public List<SummaryInfo> getSummaryInfoList() {
         return summaryInfoList;
     }
@@ -88,6 +94,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     /**
      * @param summaryInfoList the summaryInfoList to set
      */
+    @Override
     public void setSummaryInfoList(List<SummaryInfo> summaryInfoList) {
         this.summaryInfoList = summaryInfoList;
     }
@@ -96,6 +103,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return
      */
+    @Override
     public List<String> getSummaryInfoTitleList() {
         List<String> ttl = new ArrayList<String>();
         for (SummaryInfo si : summaryInfoList) {
@@ -111,6 +119,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     /**
      * @return the typeList
      */
+    @Override
     public List<String> getTypeList() {
         return typeList;
     }
@@ -119,6 +128,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @param typeList
      */
+    @Override
     public void setTypeList(List<String> typeList) {
         this.typeList = typeList;
     }
@@ -132,6 +142,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     /**
      * @return the tableData
      */
+    @Override
     public List<Map<String, String>> getTableData() {
         return tableData;
     }
@@ -139,6 +150,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     /**
      * @param tableData the tableData to set
      */
+    @Override
     public void setTableData(List<Map<String, String>> tableData) {
         this.tableData = tableData;
     }
@@ -152,6 +164,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     /**
      * @return the tabularData
      */
+    @Override
     public List<List<String>> getTabularData() {
         return tabularData;
     }
@@ -159,6 +172,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     /**
      * @param tabularData the tabularData to set
      */
+    @Override
     public void setTabularData(List<List<String>> tabularData) {
         this.tabularData = tabularData;
     }
@@ -167,6 +181,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return
      */
+    @Override
     public List<List<String>> getSummaryInfoValueList() {
         List<List<String>> values = new ArrayList<List<String>>();
         List<String> value = new ArrayList<String>();
@@ -190,6 +205,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     /**
      * @return the rowCounter
      */
+    @Override
     public int getRowCounter() {
         return rowCounter;
     }
@@ -198,6 +214,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return
      */
+    @Override
     public boolean hasRowTags() {
         return rowCounter > 0 ? true : false;
     }
@@ -209,6 +226,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     /**
      * @return the incompleteRows
      */
+    @Override
     public List<Integer> getIncompleteRows() {
         return incompleteRows;
     }
@@ -216,6 +234,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     /**
      * @param incompleteRows the incompleteRows to set
      */
+    @Override
     public void setIncompleteRows(List<Integer> incompleteRows) {
         this.incompleteRows = incompleteRows;
     }
@@ -228,6 +247,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return
      */
+    @Override
     public Map<String, String> getBoxInfoMap() {
         return boxInfoMap;
     }
@@ -236,6 +256,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @param boxInfoMap
      */
+    @Override
     public void setBoxInfoMap(Map<String, String> boxInfoMap) {
         this.boxInfoMap = boxInfoMap;
     }
@@ -248,6 +269,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return
      */
+    @Override
     public Map<String, String> getSummaryInfoMap() {
         return summaryInfoMap;
     }
@@ -256,6 +278,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @param summaryInfoMap
      */
+    @Override
     public void setSummaryInfoMap(Map<String, String> summaryInfoMap) {
         this.summaryInfoMap = summaryInfoMap;
     }
@@ -269,6 +292,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return
      */
+    @Override
     public Set<String> getTargetPollIdSet() {
         return targetPollIdSet;
     }
@@ -277,6 +301,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @param targetPollIdSet
      */
+    @Override
     public void setTargetPollIdSet(Set<String> targetPollIdSet) {
         this.targetPollIdSet = targetPollIdSet;
     }
@@ -287,10 +312,12 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     protected Set<String> targetPollIdSetUS =
             new LinkedHashSet<String>();
 
+    @Override
     public Set<String> getTargetPollIdSetUS() {
         return targetPollIdSetUS;
     }
 
+    @Override
     public void setTargetPollIdSetUS(Set<String> targetPollIdSetUS) {
         this.targetPollIdSetUS = targetPollIdSetUS;
     }
@@ -319,6 +346,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return
      */
+    @Override
     public long getBoxId() {
         return boxId;
     }
@@ -327,6 +355,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @param boxId
      */
+    @Override
     public void setBoxId(long boxId) {
         this.boxId = boxId;
     }
@@ -339,6 +368,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return
      */
+    @Override
     public String getIpAddress() {
         return ipAddress;
     }
@@ -347,6 +377,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @param ipAddress
      */
+    @Override
     public void setIpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
     }
@@ -363,6 +394,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return
      */
+    @Override
     public Map<String, Long> getPollIdToDurationMap() {
         return pollIdToDurationMap;
     }
@@ -371,6 +403,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @param pollIdToDurationMap
      */
+    @Override
     public void setPollIdToDurationMap(Map<String, Long> pollIdToDurationMap) {
         this.pollIdToDurationMap = pollIdToDurationMap;
     }
@@ -378,10 +411,12 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
 
     protected Map<String, String> pollIdToAuNameMap;
 
+    @Override
     public Map<String, String> getPollIdToAuNameMap() {
         return pollIdToAuNameMap;
     }
 
+    @Override
     public void setPollIdToAuNameMap(Map<String, String> pollIdToAuNameMap) {
         this.pollIdToAuNameMap = pollIdToAuNameMap;
     }
@@ -389,10 +424,12 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
 
     protected Map<String, Long> pollIdToEndTimeMap;
 
+    @Override
     public Map<String, Long> getPollIdToEndTimeMap() {
         return pollIdToEndTimeMap;
     }
 
+    @Override
     public void setPollIdToEndTimeMap(Map<String, Long> pollIdToEndTimeMap) {
         this.pollIdToEndTimeMap = pollIdToEndTimeMap;
     }
@@ -405,10 +442,12 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      */
     protected Map<String, Long> pollIdToDurationMapUS;
 
+    @Override
     public Map<String, Long> getPollIdToDurationMapUS() {
         return pollIdToDurationMapUS;
     }
 
+    @Override
     public void setPollIdToDurationMapUS(Map<String, Long> pollIdToDurationMapUS) {
         this.pollIdToDurationMapUS = pollIdToDurationMapUS;
     }
@@ -417,10 +456,12 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
 
     protected Map<String, String> pollIdToAuNameMapUS;
 
+    @Override
     public Map<String, String> getPollIdToAuNameMapUS() {
         return pollIdToAuNameMapUS;
     }
 
+    @Override
     public void setPollIdToAuNameMapUS(Map<String, String> pollIdToAuNameMapUS) {
         this.pollIdToAuNameMapUS = pollIdToAuNameMapUS;
     }
@@ -429,10 +470,12 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
 
     protected Map<String, Long> pollIdToEndTimeMapUS;
 
+    @Override
     public Map<String, Long> getPollIdToEndTimeMapUS() {
         return pollIdToEndTimeMapUS;
     }
 
+    @Override
     public void setPollIdToEndTimeMapUS(Map<String, Long> pollIdToEndTimeMapUS) {
         this.pollIdToEndTimeMapUS = pollIdToEndTimeMapUS;
     }
@@ -441,20 +484,24 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
 
     protected Map<String, Map<String, Map<String, String>>> pollIdToPollParticipantData;
 
+    @Override
     public Map<String, Map<String, Map<String, String>>> getPollIdToPollParticipantData() {
         return pollIdToPollParticipantData;
     }
 
+    @Override
     public void setPollIdToPollParticipantData(Map<String, Map<String, Map<String, String>>> pollIdToPollParticipantData) {
         this.pollIdToPollParticipantData = pollIdToPollParticipantData;
     }
 
     protected Map<String, Map<String, String>> pollIdToSummaryInfoMap;
 
+    @Override
     public Map<String, Map<String, String>> getPollIdToSummaryInfoMap() {
         return pollIdToSummaryInfoMap;
     }
 
+    @Override
     public void setPollIdToSummaryInfoMap(Map<String, Map<String, String>> pollIdToSummaryInfoMap) {
         this.pollIdToSummaryInfoMap = pollIdToSummaryInfoMap;
     }
@@ -470,6 +517,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return
      */
+    @Override
     public boolean isBoxHttpStatusOK() {
         return boxHttpStatusOK;
     }
@@ -478,6 +526,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @param boxHttpStatus
      */
+    @Override
     public void setBoxHttpStatusOK(boolean boxHttpStatus) {
         this.boxHttpStatusOK = boxHttpStatus;
     }
@@ -491,6 +540,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return
      */
+    @Override
     public boolean isPageReadable() {
         return pageReadable=true;
     }
@@ -499,6 +549,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @param pageReadable
      */
+    @Override
     public void setPageReadable(boolean pageReadable) {
         this.pageReadable = pageReadable;
     }
@@ -510,6 +561,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return the value of currentPollId
      */
+    @Override
     public String getCurrentPollId() {
         return currentPollId;
     }
@@ -519,6 +571,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @param currentPollId new value of currentPollId
      */
+    @Override
     public void setCurrentPollId(String currentPollId) {
         this.currentPollId = currentPollId;
     }
@@ -535,10 +588,12 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
 
     protected List<String> currentSuccessfulReplicaIpList = null;
 
+    @Override
     public List<String> getCurrentSuccessfulReplicaIpList() {
         return currentSuccessfulReplicaIpList;
     }
 
+    @Override
     public void setCurrentSuccessfulReplicaIpList(List<String> currentSuccessfulReplicaIpList) {
         this.currentSuccessfulReplicaIpList = currentSuccessfulReplicaIpList;
     }
@@ -546,10 +601,12 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
 
     protected List<String> currentUnsuccessfulReplicaIpList = null;
 
+    @Override
     public List<String> getCurrentUnsuccessfulReplicaIpList() {
         return currentUnsuccessfulReplicaIpList;
     }
 
+    @Override
     public void setCurrentUnsuccessfulReplicaIpList(List<String> currentUnsuccessfulReplicaIpList) {
         this.currentUnsuccessfulReplicaIpList = currentUnsuccessfulReplicaIpList;
     }
@@ -558,20 +615,24 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
 
     protected Map<String, List<String>> successfulReplicaIpMap = null;
 
+    @Override
     public Map<String, List<String>> getSuccessfulReplicaIpMap() {
         return successfulReplicaIpMap;
     }
 
+    @Override
     public void setSuccessfulReplicaIpMap(Map<String, List<String>> successfulReplicaIpMap) {
         this.successfulReplicaIpMap = successfulReplicaIpMap;
     }
 
     protected Map<String, List<String>> unsuccessfulReplicaIpMap = null;
 
+    @Override
     public Map<String, List<String>> getUnsuccessfulReplicaIpMap() {
         return unsuccessfulReplicaIpMap;
     }
 
+    @Override
     public void setUnsuccessfulReplicaIpMap(Map<String, List<String>> unsuccessfulReplicaIpMap) {
         this.unsuccessfulReplicaIpMap = unsuccessfulReplicaIpMap;
     }
@@ -579,10 +640,12 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
 
     Map<String, Map<String, String>> currentUnsuccessfulPollParticipantData;
 
+    @Override
     public Map<String, Map<String, String>> getCurrentUnsuccessfulPollParticipantData() {
         return currentUnsuccessfulPollParticipantData;
     }
 
+    @Override
     public void setCurrentUnsuccessfulPollParticipantData(Map<String, Map<String, String>> currentUnsuccessfulPollParticipantData) {
         this.currentUnsuccessfulPollParticipantData = currentUnsuccessfulPollParticipantData;
     }
@@ -590,10 +653,12 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
     Map<String, Object> currentPeerVotingDataUS =
             new LinkedHashMap<String, Object>();
 
+    @Override
     public Map<String, Object> getCurrentPeerVotingDataUS() {
         return currentPeerVotingDataUS;
     }
 
+    @Override
     public void setCurrentPeerVotingDataUS(Map<String, Object> currentPeerVotingDataUS) {
         this.currentPeerVotingDataUS = currentPeerVotingDataUS;
     }
@@ -608,6 +673,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return the value of daemonVersion
      */
+    @Override
     public String getDaemonVersion() {
         return daemonVersion;
     }
@@ -617,6 +683,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @param daemonVersion new value of daemonVersion
      */
+    @Override
     public void setDaemonVersion(String daemonVersion) {
         this.daemonVersion = daemonVersion;
     }
@@ -628,6 +695,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return the value of tableTitle
      */
+    @Override
     public String getTableTitle() {
         return tableTitle;
     }
@@ -637,6 +705,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @param tableTitle new value of tableTitle
      */
+    @Override
     public void setTableTitle(String tableTitle) {
         this.tableTitle = tableTitle;
     }
@@ -644,10 +713,12 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
 
     protected String tableKey;
 
+    @Override
     public String getTableKey() {
         return tableKey;
     }
 
+    @Override
     public void setTableKey(String tableKey) {
         this.tableKey = tableKey;
     }
@@ -660,6 +731,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return the value of timezoneOffset
      */
+    @Override
     public String getTimezoneOffset() {
         return timezoneOffset;
     }
@@ -669,6 +741,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @param timezoneOffset new value of timezoneOffset
      */
+    @Override
     public void setTimezoneOffset(String timezoneOffset) {
         this.timezoneOffset = timezoneOffset;
     }
@@ -680,6 +753,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return the value of httpProtocol
      */
+    @Override
     public boolean isHttpProtocol() {
         return httpProtocol;
     }
@@ -689,16 +763,19 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @param httpProtocol new value of httpProtocol
      */
+    @Override
     public void setHttpProtocol(boolean httpProtocol) {
         this.httpProtocol = httpProtocol;
     }
 
     protected String hostname;
 
+    @Override
     public String getHostname() {
         return hostname;
     }
 
+    @Override
     public void setHostname(String hostname) {
         this.hostname = hostname;
     }
@@ -712,6 +789,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return the value of verifiedCopyCount
      */
+    @Override
     public int getVerifiedCopyCount() {
         return verifiedCopyCount;
     }
@@ -731,10 +809,12 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
      *
      * @return the value of parsingFailed
      */
+    @Override
     public boolean isParsingFailed() {
         return parsingFailed;
     }
 
+    @Override
     public void setParsingFailed(boolean parsingFailed) {
         this.parsingFailed = parsingFailed;
     }
@@ -742,10 +822,12 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
 
     boolean pollAgreement100pcnt;
 
+    @Override
     public boolean isPollAgreement100pcnt() {
         return pollAgreement100pcnt;
     }
 
+    @Override
     public void setPollAgreement100pcnt(boolean pollAgreement100pcnt) {
         this.pollAgreement100pcnt = pollAgreement100pcnt;
     }
@@ -754,23 +836,28 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
 
     boolean newNon100pctPollDataAvailable = false;
 
+    @Override
     public boolean isNew100pctPollDataAvailable() {
         return new100pctPollDataAvailable;
     }
 
+    @Override
     public void setNew100pctPollDataAvailable(boolean new100pctPollDataAvailable) {
         this.new100pctPollDataAvailable = new100pctPollDataAvailable;
     }
 
+    @Override
     public boolean isNewNon100pctPollDataAvailable() {
         return newNon100pctPollDataAvailable;
     }
 
+    @Override
     public void setNewNon100pctPollDataAvailable(boolean newNon100pctPollDataAvailable) {
         this.newNon100pctPollDataAvailable = newNon100pctPollDataAvailable;
     }
 
 
+    @Override
     public void summarizePeerRepairResults(long lastPollTime) {
 
         int nVerifiedReplicas = 0;
@@ -911,16 +998,19 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
 */
     Map<String, Peers> auIdToAgreedPeersTable;
 
+    @Override
     public Map<String, Peers> getAuIdToAgreedPeersTable() {
         return auIdToAgreedPeersTable;
     }
 
+    @Override
     public void setAuIdToAgreedPeersTable(Map<String, Peers> auIdToAgreedPeersTable) {
         this.auIdToAgreedPeersTable = auIdToAgreedPeersTable;
     }
 
 
     @Deprecated
+    @Override
     public PeerRepair tabulatePeerRepairResults(long pollCutoffTime) {
 
         String timeZone = this.getTimezoneOffset();
@@ -999,6 +1089,7 @@ public class LOCKSSDaemonStatusTableTO implements java.io.Serializable {
 
 
 
+    @Override
     public Peers tabulateAgreedPeers(long pollCutoffTime) {
 
         String timeZone = this.getTimezoneOffset();
