@@ -294,7 +294,7 @@ public class LOCKSSPlatformStatusHtmlParser implements LOCKSSPlatformStatusParse
      * @return
      */
     @Override
-    public LOCKSSDaemonStatusTableTO getLOCKSSDaemonStatusTableTO() {
+    public LOCKSSDaemonStatusTableTO getLOCKSSDaemonStatusTable() {
         LOCKSSDaemonStatusTableTO ldstTO = new LOCKSSDaemonStatusTableTO();
         ldstTO.tableId = tableId;
         ldstTO.tableData = null;

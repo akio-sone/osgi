@@ -196,9 +196,17 @@ public class LOCKSSDaemonStatusTableTO implements LOCKSSDaemonStatusTable {
     /**
      *
      */
-    public boolean hasIncompleteRows = false;
-    /**
-     *
+    boolean incompleteRow = false;
+    @Override
+    public boolean hasIncompleteRows(){
+        return incompleteRow;
+    }
+
+    @Override
+    public void setIncompleteRows(boolean incompleteRow){
+        this.incompleteRow = incompleteRow;
+    }
+    /**     *
      */
     protected int rowCounter = 0;
 
@@ -871,7 +879,7 @@ public class LOCKSSDaemonStatusTableTO implements LOCKSSDaemonStatusTable {
 //
         logger.log(Level.FINE, "lastPollTime={0}", lastPollTime);
          int non100pcntBox = 0;
-        if (this.hasIncompleteRows) {
+        if (this.hasIncompleteRows()) {
             logger.log(Level.FINE, "use Map");
             // use map
             List<Map<String, String>> tblh = this.getTableData();
@@ -1246,7 +1254,7 @@ public class LOCKSSDaemonStatusTableTO implements LOCKSSDaemonStatusTable {
                 + "tableKey = " + this.tableKey + "\n"
                 + "tableData = " + this.tableData + "\n"
                 + "tabularData = " + this.tabularData + "\n"
-                + "hasIncompleteRows = " + this.hasIncompleteRows + "\n"
+                + "hasIncompleteRows = " + this.hasIncompleteRows() + "\n"
                 + "incompleteRows = " + this.incompleteRows + "\n"
                 + "summaryInfoList = " + this.summaryInfoList + "\n"
                 + "columndescriptorList = " + this.columndescriptorList + "\n"

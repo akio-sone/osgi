@@ -17,7 +17,6 @@
  */
 package edu.harvard.iq.safe.lockss.api;
 
-import edu.harvard.iq.safe.lockss.impl.LOCKSSDaemonStatusTableTO;
 import java.io.InputStream;
 import java.util.Map;
 
@@ -36,7 +35,7 @@ public interface LOCKSSPlatformStatusParser {
      *
      * @return
      */
-    LOCKSSDaemonStatusTableTO getLOCKSSDaemonStatusTableTO();
+    LOCKSSDaemonStatusTable getLOCKSSDaemonStatusTable();
 
     /**
      *

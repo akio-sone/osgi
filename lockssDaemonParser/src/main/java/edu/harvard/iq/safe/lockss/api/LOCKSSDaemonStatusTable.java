@@ -394,6 +394,15 @@ public interface LOCKSSDaemonStatusTable extends Serializable {
     @Deprecated
     PeerRepair tabulatePeerRepairResults(long pollCutoffTime);
 
+    @Override
     String toString();
+
+
+
+    void setIncompleteRows(boolean incompleteRows);
+    
+    boolean hasIncompleteRows();
+
+
 
 }

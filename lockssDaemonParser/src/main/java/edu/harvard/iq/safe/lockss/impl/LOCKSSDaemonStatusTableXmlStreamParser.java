@@ -19,6 +19,8 @@ package edu.harvard.iq.safe.lockss.impl;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
+import edu.harvard.iq.safe.lockss.api.LOCKSSDaemonStatusTable;
+import edu.harvard.iq.safe.lockss.api.LOCKSSDaemonStatusTableXmlParser;
 //import edu.harvard.iq.safe.saasystem.etl.TargetDaemonStatusTable;
 //import edu.harvard.iq.safe.saasystem.util.PLNmemberIpDAO;
 import java.io.BufferedInputStream;
@@ -48,7 +50,7 @@ import org.apache.commons.lang3.StringUtils;
  *
  * @author Akio Sone at UNC-Odum
  */
-public class LOCKSSDaemonStatusTableXmlStreamParser {
+public class LOCKSSDaemonStatusTableXmlStreamParser implements LOCKSSDaemonStatusTableXmlParser {
 
     final static Logger logger =
             Logger.getLogger(LOCKSSDaemonStatusTableXmlStreamParser.class.getName());
@@ -201,6 +203,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
      * @param encoding
      * @throws FileNotFoundException
      */
+    @Override
     public void read(String name, String encoding) throws FileNotFoundException {
         read(new FileInputStream(name), encoding);
     }
@@ -210,6 +213,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
      * @param name
      * @throws FileNotFoundException
      */
+    @Override
     public void read(String name) throws FileNotFoundException {
         read(new FileInputStream(name), "utf8");
     }
@@ -220,6 +224,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
      * @param encoding
      * @throws FileNotFoundException
      */
+    @Override
     public void read(File file, String encoding) throws FileNotFoundException {
         read(new FileInputStream(file), encoding);
     }
@@ -229,6 +234,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
      * @param file
      * @throws FileNotFoundException
      */
+    @Override
     public void read(File file) throws FileNotFoundException {
         read(new FileInputStream(file), "utf8");
     }
@@ -237,6 +243,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
      *
      * @param stream
      */
+    @Override
     public void read(InputStream stream) {
         read(stream, "utf8");
     }
@@ -246,6 +253,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
      * @param stream
      * @param encoding
      */
+    @Override
     public void read(InputStream stream, String encoding) {
         // logger.setLevel(Level.FINE);
         // 1. create Input factory
@@ -823,6 +831,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
      *
      * @return
      */
+    @Override
     public List<Integer> getIncompleteRowList() {
         return incompleteRows;
     }
@@ -839,6 +848,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
     /**
      * @return the tableId
      */
+    @Override
     public String getTableId() {
         return tableId;
     }
@@ -846,6 +856,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
     /**
      * @return the columndescriptorList
      */
+    @Override
     public List<String> getColumndescriptorList() {
         return columndescriptorList;
     }
@@ -854,6 +865,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
      *
      * @return
      */
+    @Override
     public List<String> getSummaryInfoTitleList() {
         List<String> ttl = new ArrayList<String>();
         for (SummaryInfo si : summaryInfoList) {
@@ -865,6 +877,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
     /**
      * @return the summaryInfoList
      */
+    @Override
     public List<SummaryInfo> getSummaryInfoList() {
         return summaryInfoList;
     }
@@ -872,6 +885,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
     /**
      * @return the typeList
      */
+    @Override
     public List<String> getTypeList() {
         return typeList;
     }
@@ -879,6 +893,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
     /**
      * @return the tableData
      */
+    @Override
     public List<Map<String, String>> getTableData() {
         return tableData;
     }
@@ -886,6 +901,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
     /**
      * @return the tabularData
      */
+    @Override
     public List<List<String>> getTabularData() {
         return tabularData;
     }
@@ -894,6 +910,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
      *
      * @return
      */
+    @Override
     public List<List<String>> getSummaryInfoValueList() {
         List<List<String>> values = new ArrayList<List<String>>();
         List<String> value = new ArrayList<String>();
@@ -909,9 +926,13 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
     /**
      * @param tableId the tableId to set
      */
+    @Override
     public void setTableId(String tableId) {
         this.tableId = tableId;
     }
+
+
+
     /**
      *
      */
@@ -921,6 +942,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
      *
      * @return
      */
+    @Override
     public boolean hasRowTags() {
         return rowCounter > 0 ? true : false;
     }
@@ -932,6 +954,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
      *
      * @return the value of tableTitle
      */
+    @Override
     public String getTableTitle() {
         return tableTitle;
     }
@@ -941,6 +964,7 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
      *
      * @param tableTitle new value of tableTitle
      */
+    @Override
     public void setTableTitle(String tableTitle) {
         this.tableTitle = tableTitle;
     }
@@ -948,10 +972,12 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
 
     boolean pollAgreement100pcnt=true;
 
+    @Override
     public boolean isPollAgreement100pcnt() {
         return pollAgreement100pcnt;
     }
 
+    @Override
     public void setPollAgreement100pcnt(boolean pollAgreement100pcnt) {
         this.pollAgreement100pcnt = pollAgreement100pcnt;
     }
@@ -959,10 +985,12 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
 
     Map<String, String> summaryInfoMap;
 
+    @Override
     public Map<String, String> getSummaryInfoMap() {
         return summaryInfoMap;
     }
 
+    @Override
     public void setSummaryInfoMap(Map<String, String> summaryInfoMap) {
         this.summaryInfoMap = summaryInfoMap;
     }
@@ -1279,20 +1307,33 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
      *
      * @return
      */
-    public LOCKSSDaemonStatusTableTO getLOCKSSDaemonStatusTableTO() {
-        LOCKSSDaemonStatusTableTO ldstTO = new LOCKSSDaemonStatusTableTO();
-        ldstTO.tableId = tableId;
-        ldstTO.tableTitle = tableTitle;
-        ldstTO.tableKey = tableKey;
-        ldstTO.tableData = tableData;
-        ldstTO.tabularData = tabularData;
-        ldstTO.hasIncompleteRows = hasIncompleteRows;
-        ldstTO.incompleteRows = incompleteRows;
-        ldstTO.summaryInfoList = summaryInfoList;
-        ldstTO.columndescriptorList = columndescriptorList;
-        ldstTO.typeList = typeList;
-        ldstTO.boxInfoMap = null;
-        ldstTO.summaryInfoMap = this.summaryInfoMap;
+    @Override
+    public LOCKSSDaemonStatusTable getLOCKSSDaemonStatusTable() {
+        LOCKSSDaemonStatusTable ldstTO = new LOCKSSDaemonStatusTableTO();
+        //ldstTO.tableId = tableId;
+        ldstTO.setTableId(tableId);
+        //ldstTO.tableTitle = tableTitle;
+        ldstTO.setTableTitle(tableTitle);
+        //ldstTO.tableKey = tableKey;
+        ldstTO.setTableKey(tableKey);
+        //ldstTO.tableData = tableData;
+        ldstTO.setTableData(tableData);
+        //ldstTO.tabularData = tabularData;
+        ldstTO.setTabularData(tabularData);
+        //ldstTO.hasIncompleteRows = hasIncompleteRows;
+        ldstTO.setIncompleteRows(hasIncompleteRows);
+        //ldstTO.incompleteRows = incompleteRows;
+        ldstTO.setIncompleteRows(incompleteRows);
+        //ldstTO.summaryInfoList = summaryInfoList;
+        ldstTO.setSummaryInfoList(summaryInfoList);
+        //ldstTO.columndescriptorList = columndescriptorList;
+        ldstTO.setColumndescriptorList(columndescriptorList);
+        //ldstTO.typeList = typeList;
+        ldstTO.setTypeList(typeList);
+        //ldstTO.boxInfoMap = null;
+        ldstTO.setBoxInfoMap(null);
+        //ldstTO.summaryInfoMap = this.summaryInfoMap;
+        ldstTO.setSummaryInfoMap(this.summaryInfoMap);
 
 
 
@@ -1302,14 +1343,16 @@ public class LOCKSSDaemonStatusTableXmlStreamParser {
 
         if (isTargetPageValid) {
             if (tableId.equals("V3PollerTable")) {
-                ldstTO.targetPollIdSet = getTargetPollIdSet();
-
-                ldstTO.targetPollIdSetUS = getLessthan100pcntPollIdSet();
-
+                //ldstTO.targetPollIdSet = getTargetPollIdSet();
+                ldstTO.setTargetPollIdSet(getTargetPollIdSet());
+                //ldstTO.targetPollIdSetUS = getLessthan100pcntPollIdSet();
+                ldstTO.setTargetPollIdSetUS(getLessthan100pcntPollIdSet());
 
             } else {
-                ldstTO.targetPollIdSet = null;
-                ldstTO.targetPollIdSetUS = null;
+                //ldstTO.targetPollIdSet = null;
+                ldstTO.setTargetPollIdSet(null);
+                //ldstTO.targetPollIdSetUS = null;
+                ldstTO.setTargetPollIdSetUS(null);
             }
 
             if (tableId.equals("V3PollerDetailTable")) {
